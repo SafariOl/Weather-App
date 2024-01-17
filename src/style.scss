@@ -1,0 +1,390 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$bdb: #0b0b0f;
+$bdw: #979798;
+$bg: #191818;
+$shd: 5px 5px 5px #000;
+$white: #fff;
+$trans: all .3s ease;
+
+body {
+  background: #0d0d11;
+  font-family: "Ubuntu", sans-serif;
+  color: $white;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    max-height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #656464;
+}
+
+main{
+    padding: 1.3em 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+h2{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+button{
+  font-family: "Ubuntu", sans-serif;
+}
+
+.current-day{
+    position: relative;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .logo{
+        font-size: 2em;
+    }
+    input{
+        padding: 10px 15px;
+        width: 30vw;
+        border-radius: 10px;
+        outline: none;
+        background: $bg;
+        border: 2px solid $bdb;
+        box-shadow: $shd;
+        color: $white;
+        font-size: 16px;
+        text-transform: capitalize;
+        &:focus{
+            border: 2px solid $bdw;
+        }
+    }
+    button{
+        background-color: $bg;
+        border: 2px solid $bdw;
+        box-shadow: $shd;
+        outline: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: $white;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 16px;
+        &:active{
+            background-color: $bdb;
+        }
+    }
+    .search{
+        position: absolute;
+        top: 50%;
+        left: 63%;
+        transform: translate(-63%, -50%);
+    }
+}
+
+.current{
+    background-color: $bg;
+    width: 24vw;
+    padding: 1.5em;
+    border-radius: 25px;
+    box-shadow: $shd;
+    border: 2px solid $bdb;
+    transition: $trans;
+
+    .temerature-block{
+        border-bottom: 2px solid #383636;
+        padding-bottom: 10px;
+    }
+    .temperature{
+        margin: 10px 0;
+        font-size: 3.5em;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+    .weather-name{
+        width: 8vw;
+    }
+    &.hightlights{
+        width: 68vw;
+        .hightlights__content{
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(100px, 1fr));
+            grid-template-rows: repeat(2, minmax(100px, 130px));
+            grid-column-gap: 1.2rem;
+            grid-row-gap: 1.2rem;
+            .hilight__block{
+                background-color:#131313;
+                padding: 1rem;
+                border-radius: 20px;
+            }
+            .hilight__block:nth-child(1){
+                grid-area: 1 / 1 / 2 / 3;
+            }
+            .hilight__block:nth-child(2){
+                grid-area: 1 / 3 / 2 / 5;
+            }
+            .hilight__block:nth-child(3){
+                grid-area: 2 / 1 / 3 / 2;
+            }
+            .hilight__block:nth-child(4){
+                grid-area: 2 / 2 / 3 / 3;
+            }
+            .hilight__block:nth-child(5){
+                grid-area: 2 / 3 / 3 / 4;
+            }
+            .hilight__block:nth-child(6){
+                grid-area: 2 / 4 / 3 / 4;
+            }
+            .highlight-title{
+                color: #656464;
+                font-size: 1.2em;
+            }
+            .items{
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2em;
+                padding: 5px;
+                .item__name{
+                    font-size: 1.3rem;
+                    color: #898383;
+                    text-align: center;
+                }
+                .item__value{
+                    font-size: 2.2rem;
+                }
+                .item__value__sun{
+                    font-size: 1.6rem;
+                }
+                .item__under{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                }
+                .item__value__under{
+                    font-size: 1.7rem;
+                }
+                .icons{
+                    font-size: 2.5rem;
+                }
+            }
+        }
+    }
+}
+
+.weather{
+    width: 4rem;
+}
+
+.hourly{
+    margin-top: 35px;
+    .hours__block{
+        padding-bottom: 20px;
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        width: 68vw;
+        gap: 1.2rem;
+        align-items: center;
+        overflow-x: scroll;
+        .hour{
+            background-color: $bg;
+            box-shadow: $shd;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    }
+}
+
+
+.forecast{
+    margin-top: 30px;
+    .days{
+        padding: .5em, 1.5em;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-top: 10px;
+        max-height: 280px;
+        overflow-y: scroll;
+        
+        .day{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .temp{
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+@media (min-width: 1025px){
+    .current{
+        &:hover{
+            border: 2px solid $bdw;
+            transform: scale(1.015);
+        }
+    }
+    .forecast{
+        .days{
+            &:hover{
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+@media (max-width: 1220px){
+    .current{
+        &.hightlights{
+            .hightlights__content{
+                .items{
+                    .item__value__sun{
+                        font-size: 1.1em;
+                    }
+                    .item__value__under{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1025px){
+    body{
+        overflow: visible;
+    }
+    .current{
+        width: 43vw;
+        .temperature{
+            font-size: 4.5em;
+        }
+        &.hightlights{
+            margin-top: 40px;
+            width: 90vw;
+        }
+        .weather-name {
+            width: 16vw;
+        }
+    }
+    h2{
+        font-size: 30px;
+    }
+    .cur-future{
+        width: 90vw;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    .hourly{
+        .hours__block{
+            width: 90vw;
+        }
+    }
+}
+
+@media (max-width: 730px){
+    
+    h2{
+        font-size: 25px;
+    }
+    .current-day{
+        flex-direction: column;
+        align-items: center;
+        input{
+            width: 80vw;
+            margin: 20px 0;
+        }
+        .search{
+            left: 85%;
+            top: 49%;
+        }
+    }
+    
+    main{
+        padding: 1.5em 1em;
+        display: flex;
+        flex-direction: column;
+    }
+    .cur-future{
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    
+    .current{
+        padding: 1.5em 0.8em;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+        .weather-name{
+            width: 25vw;
+        }
+        .temperature{
+            justify-content: space-around;
+            font-size: 4.5em;
+        }
+        &.hightlights{
+            margin-top: 30px;
+            .hightlights__content{
+                grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+                .hilight__block:nth-child(1){
+                    grid-area: 1 / 1 / 2 / 3;
+                }
+                .hilight__block:nth-child(2){
+                    grid-area: 2 / 1 / 3 / 3;
+                }
+                .hilight__block:nth-child(3){
+                    grid-area: 3 / 1 / 4 / 2;
+                }
+                .hilight__block:nth-child(4){
+                    grid-area: 3 / 2 / 4 / 3;
+                }
+                .hilight__block:nth-child(5){
+                    grid-area: 4 / 1 / 5 / 2;
+                }
+                .hilight__block:nth-child(6){
+                    grid-area: 4 / 2 / 5 / 3;
+                }
+                .items{
+                    .item__value__under{
+                        font-size: 1.3rem;
+                    }
+                    .item__value{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
