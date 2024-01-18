@@ -39,19 +39,19 @@ export default function App() {
     try{
       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`)
       const data = await res.json();
-      let timezone = data.timezone
-      setTemp(Math.floor(data.main.temp))
-      setWeatherName(data.weather[0].description)
-      setWeather(data.weather[0].main)
-      setSpeed(data.wind.speed)
-      setWinDeg(data.wind.deg)
-      setHumidity(data.main.humidity)
-      setVisibility(data.visibility / 1000)
-      setPressure(data.main.pressure)
-      setFeelsLike(Math.floor(data.main.feels_like))
-      setSunrise(moment.utc(data.sys.sunrise,'X').add(timezone,'seconds').format('HH:mm a'))
-      setSunset(moment.utc(data.sys.sunset,'X').add(timezone,'seconds').format('HH:mm a'))
-      return data
+        let timezone = data.timezone
+        setTemp(Math.floor(data.main.temp))
+        setWeatherName(data.weather[0].description)
+        setWeather(data.weather[0].main)
+        setSpeed(data.wind.speed)
+        setWinDeg(data.wind.deg)
+        setHumidity(data.main.humidity)
+        setVisibility(data.visibility / 1000)
+        setPressure(data.main.pressure)
+        setFeelsLike(Math.floor(data.main.feels_like))
+        setSunrise(moment.utc(data.sys.sunrise,'X').add(timezone,'seconds').format('HH:mm a'))
+        setSunset(moment.utc(data.sys.sunset,'X').add(timezone,'seconds').format('HH:mm a'))
+        return data
     }catch(err){
       console.log(err)
     }

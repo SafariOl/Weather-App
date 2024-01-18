@@ -21,17 +21,23 @@ export default function ForecastWeather({location}) {
     try{
       const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${API_KEY}`)
       const data = await res.json()
+      days.innerHTML = ''
+      let prevDay
       for(let i = 0; i < data.list.length; i++){
         if(i % 6 == 0){
           const date = new Date(data.list[i].dt_txt)
           let time = new Intl.DateTimeFormat("en-US", options2).format(date)
-          days.innerHTML += `
-            <div class='day'>
-              <div class="temp">${Math.floor(data.list[i].main.temp)}<sup>o<sub>c</sub></sup></div>
-              <img class="weather" src=${images[data.list[i].weather[0].main]}></img>
-              <div class='time'>${date.getDate()} ${time},${dayWeek[date.getDay()]}</div>
-            </div>
-          `
+          let day = date.getDate()
+          if(day - prevDay == 1){
+            days.innerHTML += `
+              <div class='day'>
+                <div class="temp">${Math.floor(data.list[i].main.temp)}<sup>o<sub>c</sub></sup></div>
+                <img class="weather" src=${images[data.list[i].weather[0].main]}></img>
+                <div class='time'>${day} ${time},${dayWeek[date.getDay()]}</div>
+              </div>
+            `
+          }
+          prevDay = day
         }
       }
     }catch(err){

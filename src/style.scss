@@ -245,6 +245,42 @@ button{
     }
 }
 
+@font-face {
+    font-family: faster;
+    src: url(./font/Faster\ Stroker.otf);
+}
+
+.error{
+    display: none;
+    &.active{
+        display: block;
+    }
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    margin-top: 100px;
+    font-family: faster;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    h1{
+        padding: 1rem 2rem;
+        box-shadow: $shd;
+        border-radius: 8px;
+        line-height: 1;
+        width: max-content;
+        font-size: 4rem;
+        border: 3px solid $bdw;
+        span{
+            font-size: 6rem;
+        };
+    }
+    h2{
+        margin-top: 30px;
+        font-size: 2rem;
+    }
+}
+
 @media (min-width: 1025px){
     .current{
         &:hover{
