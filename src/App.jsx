@@ -39,7 +39,6 @@ export default function App() {
     try{
       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`)
       const data = await res.json();
-      console.log(data)
         if(data.cod === '404'){
           document.querySelector('.error').classList.add('active')
         }else {
