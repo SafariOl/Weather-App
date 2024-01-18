@@ -33,7 +33,7 @@ export default function ForecastWeather({location}) {
               <div class='day'>
                 <div class="temp">${Math.floor(data.list[i].main.temp)}<sup>o<sub>c</sub></sup></div>
                 <img class="weather" src=${images[data.list[i].weather[0].main]}></img>
-                <div class='time'>${day} ${time},${dayWeek[date.getDay()]}</div>
+                <div class='time'>${day} ${time}</div>
               </div>
             `
           }
