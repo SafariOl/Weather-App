@@ -239,18 +239,23 @@ button {
   src: url(./font/Faster\ Stroker.otf);
 }
 .error {
-  display: none;
+  opacity: 0;
+  background-color: #0d0d11;
+  overflow: hidden;
   position: fixed;
   inset: 0;
   width: 100vw;
   margin-top: 100px;
   font-family: faster;
   text-align: center;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 .error.active {
-  display: block;
+  opacity: 1;
 }
 .error h1 {
   padding: 1rem 2rem;
@@ -266,7 +271,6 @@ button {
   font-size: 6rem;
 }
 .error h2 {
-  margin-top: 30px;
   font-size: 2rem;
 }
 

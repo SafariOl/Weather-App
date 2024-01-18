@@ -9,6 +9,7 @@ export default function HourlyWeather({location}) {
       try{
         const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&cnt=9&appid=${API_KEY}`)
         const data = await res.json()
+        
         block.innerHTML = ''
         for(let i = 0; i < data.list.length; i++){
           const date = new Date(data.list[i].dt_txt)
@@ -28,13 +29,7 @@ export default function HourlyWeather({location}) {
     }
         
     useEffect(() => {
-      getHighlights().catch(() => {
-        block.innerHTML = `
-          <div class='error'>
-            <h1>Sorry! System can't found this location!</h1>
-          </div>
-        `
-      })
+      getHighlights()
     }, [location])
 
   return (

@@ -251,9 +251,11 @@ button{
 }
 
 .error{
-    display: none;
+    opacity: 0;
+    background-color: #0d0d11;
+    overflow: hidden;
     &.active{
-        display: block;
+        opacity: 1;
     }
     position: fixed;
     inset: 0;
@@ -261,8 +263,11 @@ button{
     margin-top: 100px;
     font-family: faster;
     text-align: center;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
     h1{
         padding: 1rem 2rem;
         box-shadow: $shd;
@@ -276,7 +281,6 @@ button{
         };
     }
     h2{
-        margin-top: 30px;
         font-size: 2rem;
     }
 }

@@ -39,6 +39,12 @@ export default function App() {
     try{
       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`)
       const data = await res.json();
+      console.log(data)
+        if(data.cod === '404'){
+          document.querySelector('.error').classList.add('active')
+        }else {
+          document.querySelector('.error').classList.remove('active')
+        }
         let timezone = data.timezone
         setTemp(Math.floor(data.main.temp))
         setWeatherName(data.weather[0].description)
@@ -58,13 +64,19 @@ export default function App() {
   }
 
   useEffect(() => {
-    getData()
+    getData().catch(() => {
+      document.querySelector('.error').classList.add('active')
+    })
   }, [location])
   
   
 
   return (
     <div className='wrapper'>
+      <div className="error">
+          <h1>ERROR<br/><span>404</span></h1>
+          <h2>System can't found<br/>this location!</h2>
+      </div>
       <nav>
         <NavBlock setLocation={setLocation}/>
       </nav>
