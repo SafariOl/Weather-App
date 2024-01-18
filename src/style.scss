@@ -163,6 +163,7 @@ button{
             .items{
                 margin: 10px 0;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
                 align-items: center;
                 gap: 2em;
@@ -180,7 +181,9 @@ button{
                 }
                 .item__under{
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: space-between;
+                    gap: 10px;
                     align-items: center;
                     width: 100%;
                 }
@@ -355,7 +358,7 @@ button{
         &.hightlights{
             margin-top: 30px;
             .hightlights__content{
-                grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+                grid-template: repeat(4, max-content) / repeat(2,minmax(35vw,1fr));
                 .hilight__block:nth-child(1){
                     grid-area: 1 / 1 / 2 / 3;
                 }
@@ -381,10 +384,41 @@ button{
                     .item__value{
                         font-size: 1.2rem;
                     }
+                    
                 }
             }
         }
     }
 
 
+}
+
+@media (max-width: 420px){
+    .current{
+        &.hightlights{
+            .hightlights__content{
+                .highlight-title{
+                    text-align: center;
+                }
+                .items{
+                    .item{
+                        text-align: center;
+                    }
+                    .item__under{
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .item__value__under{
+                        font-size: 1.5rem;
+                    }
+                    .item__value{
+                        font-size: 1.5rem;
+                    }
+                    .item__value__sun{
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
 }

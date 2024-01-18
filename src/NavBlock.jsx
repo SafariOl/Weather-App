@@ -6,7 +6,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 export default function NavBlock({setLocation}) {
   const locRef = useRef(null)
   useLayoutEffect(() => {
-    return setLocation(locRef.current.value)
+    const input = document.querySelector('input').value = 'Ukraine'
+    return setLocation(input)
   }, [])
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -17,7 +18,7 @@ export default function NavBlock({setLocation}) {
     <div className='current-day'>
         <div className="logo">weatherio</div>
         <form onSubmit={handleSubmit}>
-          <input ref={locRef} value={'Ukraine'} type="text" placeholder='Type Any Location...'/>
+          <input ref={locRef} type="text" placeholder='Type Any Location...'/>
         </form>
         <FontAwesomeIcon className='search' icon={faMagnifyingGlass} />
         <button type='button' onClick={handleSubmit}>

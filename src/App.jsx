@@ -48,7 +48,7 @@ export default function App() {
       setHumidity(data.main.humidity)
       setVisibility(data.visibility / 1000)
       setPressure(data.main.pressure)
-      setFeelsLike(data.main.feels_like)
+      setFeelsLike(Math.floor(data.main.feels_like))
       setSunrise(moment.utc(data.sys.sunrise,'X').add(timezone,'seconds').format('HH:mm a'))
       setSunset(moment.utc(data.sys.sunset,'X').add(timezone,'seconds').format('HH:mm a'))
       return data

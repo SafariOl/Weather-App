@@ -157,6 +157,7 @@ button {
 .current.hightlights .hightlights__content .items {
   margin: 10px 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 2em;
@@ -175,7 +176,9 @@ button {
 }
 .current.hightlights .hightlights__content .items .item__under {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 10px;
   align-items: center;
   width: 100%;
 }
@@ -324,7 +327,7 @@ button {
     margin-top: 30px;
   }
   .current.hightlights .hightlights__content {
-    grid-template: repeat(4, 1fr)/repeat(2, 1fr);
+    grid-template: repeat(4, max-content)/repeat(2, minmax(35vw, 1fr));
   }
   .current.hightlights .hightlights__content .hilight__block:nth-child(1) {
     grid-area: 1/1/2/3;
@@ -349,5 +352,26 @@ button {
   }
   .current.hightlights .hightlights__content .items .item__value {
     font-size: 1.2rem;
+  }
+}
+@media (max-width: 420px) {
+  .current.hightlights .hightlights__content .highlight-title {
+    text-align: center;
+  }
+  .current.hightlights .hightlights__content .items .item {
+    text-align: center;
+  }
+  .current.hightlights .hightlights__content .items .item__under {
+    justify-content: center;
+    align-items: center;
+  }
+  .current.hightlights .hightlights__content .items .item__value__under {
+    font-size: 1.5rem;
+  }
+  .current.hightlights .hightlights__content .items .item__value {
+    font-size: 1.5rem;
+  }
+  .current.hightlights .hightlights__content .items .item__value__sun {
+    font-size: 1.6rem;
   }
 }/*# sourceMappingURL=style.css.map */

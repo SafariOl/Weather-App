@@ -80,7 +80,7 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                 <div className="items">
                     <div className="item__under">
                         <FontAwesomeIcon className='icons' icon={faTemperatureLow}/>
-                        <div className="item__value__under">{feelsLike}km</div>
+                        <div className="item__value__under">{feelsLike}<sup>o<sub>c</sub></sup></div>
                     </div>
                 </div>
             </div>
