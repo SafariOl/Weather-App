@@ -254,7 +254,9 @@ button{
     opacity: 0;
     background-color: #0d0d11;
     overflow: hidden;
+    z-index: -1;
     &.active{
+        z-index: 111;
         opacity: 1;
     }
     position: fixed;
@@ -352,7 +354,9 @@ button{
 }
 
 @media (max-width: 730px){
-    
+    .error{
+        margin-top: 200px;
+    }
     h2{
         font-size: 25px;
     }

@@ -41,8 +41,10 @@ export default function App() {
       const data = await res.json();
         if(data.cod === '404'){
           document.querySelector('.error').classList.add('active')
+          document.documentElement.style.overflowY = 'hidden'
         }else {
           document.querySelector('.error').classList.remove('active')
+          document.documentElement.style.overflowY = 'visible'
         }
         let timezone = data.timezone
         setTemp(Math.floor(data.main.temp))
