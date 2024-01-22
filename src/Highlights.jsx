@@ -8,7 +8,8 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faTemperatureLow } from '@fortawesome/free-solid-svg-icons'
 
-export default function Highlights({deg, speed, sunset, sunrise, humidity, pressure, visibility, feelsLike}) {
+export default function Highlights(props) {
+    const higlights = props.highlights
   return (
     <div className='current hightlights'>
         <h2>Todays Highlights</h2>
@@ -19,11 +20,11 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                     <FontAwesomeIcon className='icons' icon={faWind}/>
                     <div className="item">
                         <p className="item__name">Deg</p>
-                        <div className="item__value">{deg}</div>
+                        <div className="item__value">{higlights.deg}</div>
                     </div>
                     <div className="item">
                         <p className="item__name">Speed</p>
-                        <div className="item__value">{speed}</div>
+                        <div className="item__value">{higlights.speed}</div>
                     </div>
                 </div>
             </div>
@@ -34,14 +35,14 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                         <FontAwesomeIcon className='icons' icon={faSun}/>
                         <div className="item">
                             <p className="item__name">Sunrise</p>
-                            <div className="item__value__sun">{sunrise}</div>
+                            <div className="item__value__sun">{higlights.sunrise}</div>
                         </div>
                     </div>
                     <div style={{display: 'flex', alignItems: 'center', gap: 15}}>
                         <FontAwesomeIcon className='icons' icon={faMoon}/>
                         <div className="item">
                             <p className="item__name">Sunset</p>
-                            <div className="item__value__sun">{sunset}</div>
+                            <div className="item__value__sun">{higlights.sunset}</div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +52,7 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                 <div className="items">
                     <div className="item__under">
                         <FontAwesomeIcon className='icons' icon={faDroplet}/>
-                        <div className="item__value__under">{humidity}%</div>
+                        <div className="item__value__under">{higlights.humidity}%</div>
                     </div>
                 </div>
             </div>
@@ -60,7 +61,7 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                 <div className="items">
                     <div className="item__under">
                         <FontAwesomeIcon className='icons' icon={faWater}/>
-                        <div className="item__value__under">{pressure}hPa</div>
+                        <div className="item__value__under">{higlights.pressure}hPa</div>
                     </div>
                 </div>
 
@@ -70,7 +71,7 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                 <div className="items">
                     <div className="item__under">
                         <FontAwesomeIcon className='icons' icon={faEye}/>
-                        <div className="item__value__under">{visibility}km</div>
+                        <div className="item__value__under">{higlights.visibility}km</div>
                     </div>
                 </div>
 
@@ -80,7 +81,7 @@ export default function Highlights({deg, speed, sunset, sunrise, humidity, press
                 <div className="items">
                     <div className="item__under">
                         <FontAwesomeIcon className='icons' icon={faTemperatureLow}/>
-                        <div className="item__value__under">{feelsLike}<sup>o<sub>c</sub></sup></div>
+                        <div className="item__value__under">{higlights.feelsLike}<sup>o<sub>c</sub></sup></div>
                     </div>
                 </div>
             </div>

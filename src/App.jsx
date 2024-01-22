@@ -23,6 +23,7 @@ export const images = {
 
 export default function App() {
   const [location, setLocation] = useState('')
+
   const [temp, setTemp] = useState(0)
   const [windDeg, setWinDeg] = useState(0)
   const [windSpeed, setSpeed] = useState(0)
@@ -34,7 +35,25 @@ export default function App() {
   const [feelsLike, setFeelsLike] = useState(0)
   const [sunrise, setSunrise] = useState('')
   const [sunset, setSunset] = useState('')
-  
+
+  const current = {
+    location: location,
+    temp: temp,
+    weather: images[weather],
+    weatherName: weatherName
+  }
+
+  const highlights = {
+    sunrise: sunrise,
+    sunset: sunset,
+    windSpeed: windSpeed,
+    windDeg: windDeg,
+    humidity: humidity,
+    pressure: pressure,
+    visibility: visibility,
+    feelsLike: feelsLike
+  }
+
   async function getData(){
     try{
       const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`)
@@ -70,8 +89,6 @@ export default function App() {
     })
   }, [location])
   
-  
-
   return (
     <div className='wrapper'>
       <div className="error">
@@ -83,11 +100,11 @@ export default function App() {
       </nav>
       <main>
         <div className='cur-future'>
-            <CurrentWeather location={location} temp={temp} weather={images[weather]} weatherName={weatherName}/>
+            <CurrentWeather current={current}/>
             <ForecastWeather location={location}/>
         </div>
         <div>
-            <Highlights sunrise={sunrise} sunset={sunset} speed={windSpeed} deg={windDeg} humidity={humidity} pressure={pressure} visibility={visibility} feelsLike={feelsLike}/>
+            <Highlights highlights={highlights}/>
             <HourlyWeather location={location} />
         </div>
       </main>

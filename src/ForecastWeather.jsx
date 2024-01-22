@@ -3,17 +3,6 @@ import { API_KEY } from './App'
 import { images } from './App'
 
 export default function ForecastWeather({location}) {
-
-  const dayWeek = {
-    0: 'Mon',
-    1: 'Tue',
-    2: 'Wed',
-    3: 'Thu',
-    4: 'Fri',
-    5: 'Sat',
-    6: 'Sun'
-  }
-
   const days = document.querySelector('.days')
   let options2 = { month: "long" };
 
@@ -24,11 +13,11 @@ export default function ForecastWeather({location}) {
       days.innerHTML = ''
       let prevDay
       for(let i = 0; i < data.list.length; i++){
-        if(i % 6 == 0){
+        if(i % 6 === 0){
           const date = new Date(data.list[i].dt_txt)
           let time = new Intl.DateTimeFormat("en-US", options2).format(date)
           let day = date.getDate()
-          if(day - prevDay == 1){
+          if(day - prevDay === 1){
             days.innerHTML += `
               <div class='day'>
                 <div class="temp">${Math.floor(data.list[i].main.temp)}<sup>o<sub>c</sub></sup></div>
