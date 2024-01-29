@@ -16,6 +16,7 @@ export default function NavBlock() {
     dispatch(getCurWeatherFunc(location))
     dispatch(fetchForecast(location))
     dispatch(getHourlyWeatherFunc(location))
+    setLocation('')
   }
 
   useEffect(() => {
