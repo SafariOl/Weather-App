@@ -1,24 +1,34 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons' 
+import { useDispatch } from 'react-redux'
+import { getCurWeatherFunc } from './CurrentWeather/weatherReducer'
+import { fetchForecast } from './ForecastWeather/ForecastWReducer'
+import { getHourlyWeatherFunc } from './HourlyWeather/HourlyWReducer'
 
-export default function NavBlock({setLocation}) {
-  const locRef = useRef(null)
+export default function NavBlock() {
+  const dispatch = useDispatch()
+  const [location, setLocation] = useState('Ukraine')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(getCurWeatherFunc(location))
+    dispatch(fetchForecast(location))
+    dispatch(getHourlyWeatherFunc(location))
+  }
+
   useEffect(() => {
-    const input = document.querySelector('input').value = 'Ukraine'
-    return setLocation(input)
+    dispatch(getCurWeatherFunc(location))
+    dispatch(fetchForecast(location))
+    dispatch(getHourlyWeatherFunc(location))
   }, [])
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      return setLocation(locRef.current.value)
-    }
 
   return (
     <div className='current-day'>
         <div className="logo">weatherio</div>
         <form onSubmit={handleSubmit}>
-          <input ref={locRef} type="text" placeholder='Type Any Location...'/>
+          <input value={location} onChange={e => setLocation(e.target.value)} type="text" placeholder='Type Any Location...'/>
         </form>
         <FontAwesomeIcon className='search' icon={faMagnifyingGlass} />
         <button type='button' onClick={handleSubmit}>
