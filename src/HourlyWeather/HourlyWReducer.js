@@ -20,11 +20,9 @@ const hourlyWeather = createSlice({
             state.loading = true
         })
         builder.addCase(getHourlyWeatherFunc.fulfilled, (state, action) => {
-            if(action.payload === undefined) {
-                state.hourly = []
-            }else{
-                state.hourly = action.payload
-            }
+            if(action.payload === undefined) state.hourly = []
+            else state.hourly = action.payload
+    
             state.loading = false
         })
         builder.addCase(getHourlyWeatherFunc.rejected, (state) => {

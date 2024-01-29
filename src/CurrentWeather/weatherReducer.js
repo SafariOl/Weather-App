@@ -20,11 +20,9 @@ const weatherReducer = createSlice({
             state.loading = true
         })
         builder.addCase(getCurWeatherFunc.fulfilled, (state, action) => {
-            if(action.payload.message){
-                state.weather = []
-            }else{
-                state.weather = [action.payload]
-            }
+            if(action.payload.message)state.weather = []
+            else state.weather = [action.payload]
+            
             state.loading = false
         })
         builder.addCase(getCurWeatherFunc.rejected, (state, action) => {

@@ -20,11 +20,9 @@ const weatherForecast = createSlice({
             state.loading = true
         })
         builder.addCase(fetchForecast.fulfilled, (state, action) => {
-            if(action.payload === undefined){
-                state.forecast = []
-            }else{
-                state.forecast = action.payload
-            }
+            if(action.payload === undefined) state.forecast = []
+            else state.forecast = action.payload
+            
             state.loading = false
         })
         builder.addCase(fetchForecast.rejected, (state) => {
